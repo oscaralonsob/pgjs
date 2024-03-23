@@ -14,8 +14,8 @@ class Room {
             w = h;
         }
 
-        let origin = new Point(0, 0);
-        let end = new Point(h, w);
+        let origin = Point.create(0, 0);
+        let end = Point.create(h, w);
 
         return new Room(origin, end);
     }
