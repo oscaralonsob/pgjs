@@ -24,6 +24,13 @@ class Room {
         this.origin.add(shift);
         this.end.add(shift);
     }
+
+    collides(other) {
+        return (
+            (this.origin.x <= other.end.x && this.end.x >= other.origin.x) &&
+            (this.origin.y <= other.end.y && this.end.y >= other.origin.y)
+        );
+    }
 }
 
 export default Room;
