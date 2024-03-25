@@ -1,8 +1,8 @@
-import RoomGeneratorCommand from './Generator/RoomGeneratorCommand.js'
-import RoomGeneratorCommandHandler from './Generator/RoomGeneratorCommandHandler.js'
+import RoomsGeneratorCommand from './Generator/RoomsGeneratorCommand.js'
+import RoomsGeneratorCommandHandler from './Generator/RoomsGeneratorCommandHandler.js'
 
-let rgc = RoomGeneratorCommand.create(4, 3);
-let rgch = RoomGeneratorCommandHandler.create();
+let rgc = RoomsGeneratorCommand.create(10, 2, 5);
+let rgch = RoomsGeneratorCommandHandler.create();
 
 let room = rgch.execute(rgc);
 console.log(room);
