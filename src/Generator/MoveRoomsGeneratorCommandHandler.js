@@ -24,10 +24,8 @@ class MoveRoomsGeneratorCommandHandler {
         if (!(room instanceof Room)) {
             return null;
         }
-        let quadrant = this.getRandomQuadrant();
         while (this.roomCollides(room, rooms)) {
-            let displacement = this.getRandomDisplacement(quadrant);
-            room.move(displacement);
+            room.move(this.getRandomDisplacement());
         }
 
         return room;
@@ -42,23 +40,10 @@ class MoveRoomsGeneratorCommandHandler {
         return false;
     }
 
-    getRandomQuadrant() {
-        return Random.between(0, 4);
-    }
-
-    getRandomDisplacement(quadrant) {
-        let x = Random.between(0, 2);
-        let y = x == 0 ? 1 : Random.between(0, 2);
-        let result = Point.create(x, y);
-        if ([0,2].includes(quadrant)) {
-            result.x = -result.x;
-        }
-
-        if ([2,3].includes(quadrant)) {
-            result.y = -result.y;
-        }
-
-        return result;
+    getRandomDisplacement() {
+        let x = Random.between(-1, 2);
+        let y = Random.between(-1, 2);
+        return Point.create(x, y);
     }
 }
 
