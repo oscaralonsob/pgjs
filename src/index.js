@@ -5,7 +5,7 @@ import MoveRoomsGeneratorCommandHandler from './Generator/MoveRoomsGeneratorComm
 import DrawRooms from './Draw/DrawRooms.js'
 
 
-let rgc = RoomsGeneratorCommand.create(10, 2, 5);
+let rgc = RoomsGeneratorCommand.create(25, 2, 10);
 let rgch = RoomsGeneratorCommandHandler.create();
 
 let rooms = rgch.execute(rgc);

@@ -8,9 +8,19 @@ class DrawRooms {
 
     execute(rooms, canvas) {
         let ctx = canvas.getContext('2d');
+        rooms.forEach(room => {
+            this.drawRoom(room, ctx);
+        });
         
-        ctx.putImageData(this.drawData(), 0, 0);
-        ctx.putImageData(this.drawData(), 16, 16);
+    }
+
+    drawRoom(room, ctx) {
+        let offset = 400;
+        for(let x = room.origin.x; x < room.end.x; x++) {
+            for(let y = room.origin.y; y < room.end.y; y++) {
+                ctx.putImageData(this.drawData(), offset - x*16, offset - y*16);
+            }
+        }
     }
 
     drawData() {
