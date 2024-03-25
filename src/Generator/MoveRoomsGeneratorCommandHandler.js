@@ -30,7 +30,6 @@ class MoveRoomsGeneratorCommandHandler {
             room.move(displacement);
         }
 
-        //TODO: do move loop
         return room;
     }
 
