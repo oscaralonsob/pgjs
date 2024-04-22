@@ -3,10 +3,12 @@ import Point from './Point.js'
 class Room {
     origin;
     end;
+    center;
 
     constructor(origin, end) {
         this.origin = origin;
         this.end = end;
+        this.calculateCenter(end);
     }
 
     static create(h, w) {
@@ -20,9 +22,17 @@ class Room {
         return new Room(origin, end);
     }
 
+    calculateCenter(end) {
+        this.center = Point.create(end.x, end.y); 
+        this.center.sub(this.origin);
+        this.center.div(2);
+        this.center.add(this.origin);
+    }
+
     move(shift) {
         this.origin.add(shift);
         this.end.add(shift);
+        this.center.add(shift);
     }
 
     collides(other) {

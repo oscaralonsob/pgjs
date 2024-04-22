@@ -15,6 +15,16 @@ class Point {
         this.x = this.x + point.x;
         this.y = this.y + point.y;
     }
+
+    sub(point) {
+        this.x = this.x - point.x;
+        this.y = this.y - point.y;
+    }
+
+    div(point) {
+        this.x = this.x/point;
+        this.y = this.y/point;
+    }
 }
 
 export default Point;
