@@ -18,7 +18,7 @@ class DrawRooms {
         let offset = 400;
         for(let x = room.origin.x; x < room.end.x; x++) {
             for(let y = room.origin.y; y < room.end.y; y++) {
-                ctx.putImageData(this.drawData(), offset - x*16, offset - y*16);
+                ctx.putImageData(this.drawData(), offset + x*16, offset + y*16);
             }
         }
     }
