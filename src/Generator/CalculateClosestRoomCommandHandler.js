@@ -16,7 +16,6 @@ class CalculateClosestRoomCommandHandler {
         let closestRoom = null;
         for (let i = 0; i < allRooms.length; i++) {
             if (room.distance(allRooms[i]) < distance && allRooms[i] != room) {
-                console.log(distance);
                 distance = room.distance(allRooms[i]);
                 closestRoom = allRooms[i];
             }

@@ -16,7 +16,6 @@ class MoveRoomsGeneratorCommandHandler {
         let rooms = [];
         
         moveRoomsGeneratorCommand.rooms.forEach(room => rooms.push(this.moveRoom(room, rooms)));
-        console.log(rooms);
         return rooms;
     }
 
