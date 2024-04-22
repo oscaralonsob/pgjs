@@ -41,6 +41,12 @@ class Room {
             (this.origin.y <= other.end.y && this.end.y >= other.origin.y)
         );
     }
+
+    distance(other) {
+        let distance = Point.create(this.center.x, this.center.y);
+        distance.sub(other.center);
+        return Math.abs(distance.x) + Math.abs(distance.y)
+    }
 }
 
 export default Room;
