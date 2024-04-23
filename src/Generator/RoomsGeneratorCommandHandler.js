@@ -1,4 +1,3 @@
-import RoomsGeneratorCommand from './RoomsGeneratorCommand.js'
 import Room from '../Model/Room.js'
 import Random from '../Utils/Random.js'
 
@@ -7,23 +6,19 @@ class RoomsGeneratorCommandHandler {
         return new RoomsGeneratorCommandHandler();
     }
 
-    execute(roomsGeneratorCommand) {
-        if (!(roomsGeneratorCommand instanceof RoomsGeneratorCommand)) {
-            return null;
-        }
-
+    execute(numberOfRooms, minSizeRoom, maxSizeRoom) {
         let rooms = [];
 
-        for (let i = 0; i < roomsGeneratorCommand.numberOfRooms; i++) {
-            rooms.push(this.generateRoom(roomsGeneratorCommand));
+        for (let i = 0; i < numberOfRooms; i++) {
+            rooms.push(this.generateRoom(minSizeRoom, maxSizeRoom));
         }
 
         return rooms;
     }
 
-    generateRoom(roomGeneratorCommand) {
-        let w = Random.between(roomGeneratorCommand.minSizeRoom, roomGeneratorCommand.maxSizeRoom);
-        let h = Random.between(roomGeneratorCommand.minSizeRoom, roomGeneratorCommand.maxSizeRoom);
+    generateRoom(minSizeRoom, maxSizeRoom) {
+        let w = Random.between(minSizeRoom, maxSizeRoom);
+        let h = Random.between(minSizeRoom, maxSizeRoom);
         
         return Room.create(w, h);
     }

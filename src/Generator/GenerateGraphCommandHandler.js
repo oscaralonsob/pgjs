@@ -1,4 +1,3 @@
-import GenerateGraphCommand from './GenerateGraphCommand.js'
 import Graph from '../Model/Graph.js';
 import Hallway from '../Model/Hallway.js';
 
@@ -7,11 +6,7 @@ class GenerateGraphCommandHandler {
         return new GenerateGraphCommandHandler();
     }
 
-    execute(generateGraphCommand) {
-        if (!(generateGraphCommand instanceof GenerateGraphCommand)) {
-            return null;
-        }
-        let rooms = generateGraphCommand.rooms;
+    execute(rooms) {
         let hallways = [];
 
         for (let i = 0; i < rooms.length; i++) {

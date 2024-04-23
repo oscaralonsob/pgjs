@@ -1,4 +1,3 @@
-import MoveRoomsGeneratorCommand from './MoveRoomsGeneratorCommand.js'
 import Room from '../Model/Room.js'
 import Random from '../Utils/Random.js'
 import Point from '../Model/Point.js'
@@ -8,15 +7,11 @@ class MoveRoomsGeneratorCommandHandler {
         return new MoveRoomsGeneratorCommandHandler();
     }
 
-    execute(moveRoomsGeneratorCommand) {
-        if (!(moveRoomsGeneratorCommand instanceof MoveRoomsGeneratorCommand)) {
-            return null;
-        }
-
-        let rooms = [];
-        
-        moveRoomsGeneratorCommand.rooms.forEach(room => rooms.push(this.moveRoom(room, rooms)));
-        return rooms;
+    execute(rooms) {
+        let movedRooms = [];
+        //TODO needs a copy?
+        rooms.forEach(room => movedRooms.push(this.moveRoom(room, movedRooms)));
+        return movedRooms;
     }
 
     moveRoom(room, rooms) {

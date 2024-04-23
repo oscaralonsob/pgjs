@@ -1,21 +1,16 @@
 import Graph from "../Model/Graph.js";
-import CalculateMinimalGraphCommand from "./CalculateMinimalGraphCommand.js";
 
 class CalculateMinimalGraphCommandHandler {
     static create() {
         return new CalculateMinimalGraphCommandHandler();
     }
 
-    execute(calculateMinimalGraphCommand) {
-        if (!(calculateMinimalGraphCommand instanceof CalculateMinimalGraphCommand)) {
-            return null;
-        }
-        
-        let hallways = calculateMinimalGraphCommand.graph.hallways;
+    execute(graph) {
+        let hallways = graph.hallways;
         let hallway;
         let parents = new Map();
         let rank = new Map();
-        let minimalGraph = Graph.create(calculateMinimalGraphCommand.graph.rooms, []);
+        let minimalGraph = Graph.create(graph.rooms, []);
         for (let i = 0; i < minimalGraph.rooms.length; i++) {
             let room = minimalGraph.rooms[i];
             parents.set(room, room);
