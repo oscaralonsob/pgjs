@@ -1,20 +1,15 @@
-import RoomsGeneratorCommandHandler from './Generator/RoomsGeneratorCommandHandler.js'
+import DungeonGeneratorCommandHandler from './Generator/DungeonGeneratorCommandHandler.js'
 import DrawRooms from './Draw/DrawRooms.js'
 import DrawHallways from './Draw/DrawHallways.js'
-import GenerateGraphCommandHandler from './Generator/GenerateGraphCommandHandler.js'
 import CalculateMinimalGraphCommandHandler from './Generator/CalculateMinimalGraphCommandHandler.js'
 
 
-let rgch = RoomsGeneratorCommandHandler.create();
+let rgch = DungeonGeneratorCommandHandler.create();
 
 let dungeon = rgch.execute(25, 2, 10);
 
 let drawRooms = DrawRooms.create();
 drawRooms.execute(dungeon, document.getElementById('canvas'));
-
-let ggch = GenerateGraphCommandHandler.create();
-
-dungeon = ggch.execute(dungeon);
 
 let cmgch = CalculateMinimalGraphCommandHandler.create();
 

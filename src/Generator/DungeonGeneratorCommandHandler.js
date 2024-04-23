@@ -3,9 +3,9 @@ import Dungeon from '../Model/Dungeon.js'
 import Point from '../Model/Point.js'
 import Random from '../Utils/Random.js'
 
-class RoomsGeneratorCommandHandler {
+class DungeonGeneratorCommandHandler {
     static create() {
-        return new RoomsGeneratorCommandHandler();
+        return new DungeonGeneratorCommandHandler();
     }
 
     execute(numberOfRooms, minSizeRoom, maxSizeRoom) {
@@ -14,10 +14,10 @@ class RoomsGeneratorCommandHandler {
 
         for (let i = 0; i < numberOfRooms; i++) {
             room = this.generateRoom(minSizeRoom, maxSizeRoom);
-            while (this.roomCollides(room, dungeon.rooms)) {
+            while (dungeon.roomWillCollide(room, dungeon.rooms)) {
                 room.move(this.getRandomDisplacement());
             }
-            dungeon.addRoom(room);
+            dungeon.addRoomWithHallways(room);
         }
 
         return dungeon;
@@ -30,16 +30,6 @@ class RoomsGeneratorCommandHandler {
         return Room.create(w, h);
     }
 
-    //TODO: move to dungeon
-    roomCollides(room, rooms) {
-        for (let i = 0; i < rooms.length; i++) {
-            if (room.collides(rooms[i])) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     getRandomDisplacement() {
         let x = Random.between(-1, 2);
         let y = Random.between(-1, 2);
@@ -47,4 +37,4 @@ class RoomsGeneratorCommandHandler {
     }
 }
 
-export default RoomsGeneratorCommandHandler;
+export default DungeonGeneratorCommandHandler;
