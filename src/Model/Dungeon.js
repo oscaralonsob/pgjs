@@ -1,20 +1,20 @@
 class Dungeon {
-    rooms;
+    rooms = [];
+    hallways = [];
 
-    constructor(rooms) {
-        this.rooms = rooms
+    constructor() {
     }
 
-    static create(rooms) {
-        if (rooms === undefined) {
-            rooms = [];
-        }
-
-        return new Dungeon(rooms);
+    static create() {
+        return new Dungeon();
     }
 
     addRoom(room) {
         this.rooms.push(room);
+    }
+
+    addHallway(hallway) {
+        this.hallways.push(hallway);
     }
 }
 

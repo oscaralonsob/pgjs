@@ -6,9 +6,9 @@ class DrawRooms {
         return new DrawRooms();
     }
 
-    execute(rooms, canvas) {
+    execute(dungeon, canvas) {
         let ctx = canvas.getContext('2d');
-        rooms.forEach(room => {
+        dungeon.rooms.forEach(room => {
             this.drawRoom(room, ctx);
         });
         

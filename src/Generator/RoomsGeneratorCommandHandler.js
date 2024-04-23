@@ -1,4 +1,5 @@
 import Room from '../Model/Room.js'
+import Dungeon from '../Model/Dungeon.js'
 import Random from '../Utils/Random.js'
 
 class RoomsGeneratorCommandHandler {
@@ -7,13 +8,13 @@ class RoomsGeneratorCommandHandler {
     }
 
     execute(numberOfRooms, minSizeRoom, maxSizeRoom) {
-        let rooms = [];
+        let dungeon = Dungeon.create();
 
         for (let i = 0; i < numberOfRooms; i++) {
-            rooms.push(this.generateRoom(minSizeRoom, maxSizeRoom));
+            dungeon.addRoom(this.generateRoom(minSizeRoom, maxSizeRoom));
         }
 
-        return rooms;
+        return dungeon;
     }
 
     generateRoom(minSizeRoom, maxSizeRoom) {

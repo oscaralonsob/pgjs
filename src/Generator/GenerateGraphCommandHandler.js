@@ -1,4 +1,3 @@
-import Graph from '../Model/Graph.js';
 import Hallway from '../Model/Hallway.js';
 
 class GenerateGraphCommandHandler {
@@ -6,16 +5,14 @@ class GenerateGraphCommandHandler {
         return new GenerateGraphCommandHandler();
     }
 
-    execute(rooms) {
-        let hallways = [];
-
-        for (let i = 0; i < rooms.length; i++) {
-            for (let j = i + 1; j < rooms.length; j++) {
-                hallways.push(Hallway.create(rooms[i], rooms[j]));
+    execute(dungeon) {
+        for (let i = 0; i < dungeon.rooms.length; i++) {
+            for (let j = i + 1; j < dungeon.rooms.length; j++) {
+                dungeon.addHallway(Hallway.create(dungeon.rooms[i], dungeon.rooms[j]));
             }
         } 
 
-        return Graph.create(rooms, hallways);
+        return dungeon;
     }
 }
 

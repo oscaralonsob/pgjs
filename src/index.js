@@ -8,22 +8,23 @@ import CalculateMinimalGraphCommandHandler from './Generator/CalculateMinimalGra
 
 let rgch = RoomsGeneratorCommandHandler.create();
 
-let rooms = rgch.execute(25, 2, 10);
+let dungeon = rgch.execute(25, 2, 10);
 
 let mrgch = MoveRoomsGeneratorCommandHandler.create();
 
-let movedRooms = mrgch.execute(rooms);
+dungeon = mrgch.execute(dungeon);
 
 let drawRooms = DrawRooms.create();
-drawRooms.execute(movedRooms, document.getElementById('canvas'));
+drawRooms.execute(dungeon, document.getElementById('canvas'));
 
 let ggch = GenerateGraphCommandHandler.create();
 
-let graph = ggch.execute(movedRooms);
+dungeon = ggch.execute(dungeon);
 
 let cmgch = CalculateMinimalGraphCommandHandler.create();
 
-graph = cmgch.execute(graph);
+dungeon = cmgch.execute(dungeon);
 
+console.log(dungeon.hallways);
 let drawHallways = DrawHallways.create();
-drawHallways.execute(graph.hallways, document.getElementById('canvas'));
+drawHallways.execute(dungeon.hallways, document.getElementById('canvas'));

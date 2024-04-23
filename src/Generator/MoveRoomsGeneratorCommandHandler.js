@@ -7,11 +7,11 @@ class MoveRoomsGeneratorCommandHandler {
         return new MoveRoomsGeneratorCommandHandler();
     }
 
-    execute(rooms) {
+    execute(dungeon) {
         let movedRooms = [];
         //TODO needs a copy?
-        rooms.forEach(room => movedRooms.push(this.moveRoom(room, movedRooms)));
-        return movedRooms;
+        dungeon.rooms.forEach(room => movedRooms.push(this.moveRoom(room, movedRooms)));
+        return dungeon;
     }
 
     moveRoom(room, rooms) {

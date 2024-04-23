@@ -1,22 +1,23 @@
-import Graph from "../Model/Graph.js";
+import Dungeon from "../Model/Dungeon.js";
 
 class CalculateMinimalGraphCommandHandler {
     static create() {
         return new CalculateMinimalGraphCommandHandler();
     }
 
-    execute(graph) {
-        let hallways = graph.hallways;
+    execute(dungeon) {
+        let hallways = dungeon.hallways;
         let hallway;
         let parents = new Map();
         let rank = new Map();
-        let minimalGraph = Graph.create(graph.rooms, []);
-        for (let i = 0; i < minimalGraph.rooms.length; i++) {
-            let room = minimalGraph.rooms[i];
+        let minimalGraph = Dungeon.create();
+        for (let i = 0; i < dungeon.rooms.length; i++) {
+            let room = dungeon.rooms[i];
+            minimalGraph.addRoom(room);
             parents.set(room, room);
             rank.set(room, 1);
         };
-
+        
         hallways.sort(function(x, y) {
             return x.distance < y.distance ? -1 : x.distance > y.distance;
         });
@@ -36,6 +37,7 @@ class CalculateMinimalGraphCommandHandler {
                     rank.set(from, rank.get(to) + 1);
                 }
                 minimalGraph.addHallway(hallway);
+                console.log(minimalGraph);
             }
         }
         
