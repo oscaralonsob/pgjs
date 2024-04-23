@@ -1,12 +1,18 @@
-class DrawEdge {
+class DrawHallways {
     constructor() {
     }
 
     static create() {
-        return new DrawEdge();
+        return new DrawHallways();
     }
 
-    execute(origin, end, canvas) {
+    execute(hallways, canvas) {
+        for (let i = 0; i < hallways.length; i++) {
+            this.drawHallway(hallways[i].from, hallways[i].to, canvas);   
+        }
+    }
+
+    drawHallway(origin, end, canvas) {
         let ctx = canvas.getContext('2d');
         let offset = 400;
 
@@ -20,4 +26,4 @@ class DrawEdge {
     }
 }
 
-export default DrawEdge;
+export default DrawHallways;

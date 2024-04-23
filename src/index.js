@@ -3,9 +3,11 @@ import RoomsGeneratorCommandHandler from './Generator/RoomsGeneratorCommandHandl
 import MoveRoomsGeneratorCommand from './Generator/MoveRoomsGeneratorCommand.js'
 import MoveRoomsGeneratorCommandHandler from './Generator/MoveRoomsGeneratorCommandHandler.js'
 import DrawRooms from './Draw/DrawRooms.js'
-import CalculateClosestRoomCommand from './Generator/CalculateClosestRoomCommand.js'
-import CalculateClosestRoomCommandHandler from './Generator/CalculateClosestRoomCommandHandler.js'
-import DrawEdge from './Draw/DrawEdge.js'
+import DrawHallways from './Draw/DrawHallways.js'
+import GenerateGraphCommand from './Generator/GenerateGraphCommand.js'
+import GenerateGraphCommandHandler from './Generator/GenerateGraphCommandHandler.js'
+import CalculateMinimalGraphCommand from './Generator/CalculateMinimalGraphCommand.js'
+import CalculateMinimalGraphCommandHandler from './Generator/CalculateMinimalGraphCommandHandler.js'
 
 
 let rgc = RoomsGeneratorCommand.create(25, 2, 10);
@@ -21,10 +23,15 @@ let movedRooms = mrgch.execute(mrgc);
 let drawRooms = DrawRooms.create();
 drawRooms.execute(movedRooms, document.getElementById('canvas'));
 
-let crc = CalculateClosestRoomCommand.create(movedRooms[0], movedRooms)
-let crch = CalculateClosestRoomCommandHandler.create();
+let ggc = GenerateGraphCommand.create(movedRooms)
+let ggch = GenerateGraphCommandHandler.create();
 
-let closestRoom = crch.execute(crc);
+let graph = ggch.execute(ggc);
 
-let drawEdge = DrawEdge.create();
-drawEdge.execute(movedRooms[0], closestRoom, document.getElementById('canvas'));
+let cmgc = CalculateMinimalGraphCommand.create(graph)
+let cmgch = CalculateMinimalGraphCommandHandler.create();
+
+graph = cmgch.execute(cmgc);
+
+let drawHallways = DrawHallways.create();
+drawHallways.execute(graph.hallways, document.getElementById('canvas'));
