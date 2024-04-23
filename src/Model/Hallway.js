@@ -1,16 +1,18 @@
 class Hallway {
     from;
     to;
-    distance;
 
     constructor(from, to) {
         this.from = from;
         this.to = to;
-        this.distance = from.distance(to);
     }
 
     static create(from, to) {
         return new Hallway(from, to);
+    }
+
+    distance() {
+        return this.from.distance(this.to);
     }
 }
 

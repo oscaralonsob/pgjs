@@ -17,9 +17,9 @@ class CalculateMinimalGraphCommandHandler {
             parents.set(room, room);
             rank.set(room, 1);
         };
-        
+
         hallways.sort(function(x, y) {
-            return x.distance < y.distance ? -1 : x.distance > y.distance;
+            return x.distance() < y.distance() ? -1 : x.distance() > y.distance();
         });
 
         for (let i = 0; i < hallways.length; i++) {
@@ -37,7 +37,6 @@ class CalculateMinimalGraphCommandHandler {
                     rank.set(from, rank.get(to) + 1);
                 }
                 minimalGraph.addHallway(hallway);
-                console.log(minimalGraph);
             }
         }
         

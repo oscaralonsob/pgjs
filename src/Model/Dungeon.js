@@ -16,6 +16,10 @@ class Dungeon {
     addHallway(hallway) {
         this.hallways.push(hallway);
     }
+
+    removeHallway(hallway) {
+        this.hallways.push(hallway);
+    }
 }
 
 export default Dungeon;
