@@ -1,3 +1,6 @@
+import {offset} from "./DrawDungeon.js";
+import {size} from "./DrawDungeon.js";
+
 class DrawHallways {
     constructor() {
     }
@@ -6,22 +9,20 @@ class DrawHallways {
         return new DrawHallways();
     }
 
-    execute(hallways, canvas) {
+    execute(hallways, ctx) {
         for (let i = 0; i < hallways.length; i++) {
-            this.drawHallway(hallways[i].from, hallways[i].to, canvas);   
+            this.drawHallway(hallways[i].from, hallways[i].to, ctx);   
         }
+        console.log(size)
     }
 
-    drawHallway(origin, end, canvas) {
-        let ctx = canvas.getContext('2d');
-        let offset = 400;
-
+    drawHallway(origin, end, ctx) {
         ctx.strokeStyle = 'black';  
         ctx.lineWidth = 5; 
 
         ctx.beginPath();  
-        ctx.moveTo(offset + origin.center.x * 16, offset + origin.center.y * 16);  
-        ctx.lineTo(offset + end.center.x * 16, offset + end.center.y * 16);  
+        ctx.moveTo(offset + origin.center.x * size, offset + origin.center.y * size);  
+        ctx.lineTo(offset + end.center.x * size, offset + end.center.y * size);  
         ctx.stroke();
     }
 }
