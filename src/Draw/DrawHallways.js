@@ -18,7 +18,7 @@ class DrawHallways {
 
     drawHallway(origin, end, ctx) {
         ctx.strokeStyle = 'black';  
-        ctx.lineWidth = 5; 
+        ctx.lineWidth = 3; 
 
         ctx.beginPath();  
         ctx.moveTo(offset + origin.center.x * size, offset + origin.center.y * size);  

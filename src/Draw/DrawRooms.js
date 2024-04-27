@@ -10,27 +10,23 @@ class DrawRooms {
     }
 
     execute(rooms, ctx) {
+        console.log(rooms[0].size());
         rooms.forEach(room => {
-            this.drawRoom(room, ctx);
+            this.drawRoomNew(
+                room.origin,
+                room.size(),
+                3, 
+                ctx
+            );
         });
-        
     }
 
-    drawRoom(room, ctx) {
-        for(let x = room.origin.x; x < room.end.x; x++) {
-            for(let y = room.origin.y; y < room.end.y; y++) {
-                ctx.putImageData(this.drawData(), offset + x*size, offset + y*size);
-            }
-        }
-    }
-
-    drawData() {
-        let arrayData = new Uint8ClampedArray(
-            Array(256).fill([0,0,0,255]).flat()
-        );
-        const imageData = new ImageData(arrayData, size, size);
-
-        return imageData;
+    drawRoomNew(pos, rectSize, thickness, ctx) {
+        ctx.fillStyle='#000';
+        ctx.fillRect(offset + pos.x * size - (thickness), offset + pos.y * size - (thickness), rectSize.x * size + (thickness * 2), rectSize.y * size + (thickness * 2));
+    
+        ctx.fillStyle='#FFF';
+        ctx.fillRect(offset + pos.x * size, offset + pos.y * size, rectSize.x * size, rectSize.y * size);
     }
 }
 

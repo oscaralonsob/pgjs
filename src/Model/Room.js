@@ -42,6 +42,12 @@ class Room {
         );
     }
 
+    size() {
+        let size = Point.create(this.end.x, this.end.y);
+        size.sub(this.origin);
+        return size;
+    }
+
     distance(other) {
         let distance = Point.create(this.center.x, this.center.y);
         distance.sub(other.center);
