@@ -11,7 +11,7 @@ class DrawHallways {
 
     execute(hallways, ctx) {
         for (let i = 0; i < hallways.length; i++) {
-            this.drawHallway(hallways[i].from, hallways[i].to, ctx);   
+            this.drawHallway(hallways[i].jointPoints[0], hallways[i].jointPoints[1], ctx);   
         }
         console.log(size)
     }
@@ -21,8 +21,8 @@ class DrawHallways {
         ctx.lineWidth = 3; 
 
         ctx.beginPath();  
-        ctx.moveTo(offset + origin.center.x * size, offset + origin.center.y * size);  
-        ctx.lineTo(offset + end.center.x * size, offset + end.center.y * size);  
+        ctx.moveTo(offset + origin.x * size, offset + origin.y * size);  
+        ctx.lineTo(offset + end.x * size, offset + end.y * size);  
         ctx.stroke();
     }
 }
