@@ -5,7 +5,7 @@ import DrawDungeon from './Draw/DrawDungeon.js';
 
 let rgch = DungeonGeneratorCommandHandler.create();
 
-let dungeon = rgch.execute(25, 2, 10);
+let dungeon = rgch.execute(15, 8, 40);
 
 let cmgch = CalculateMinimalGraphCommandHandler.create();
 

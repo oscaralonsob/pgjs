@@ -13,17 +13,40 @@ class DrawHallways {
         for (let i = 0; i < hallways.length; i++) {
             this.drawHallway(hallways[i].jointPoints[0], hallways[i].jointPoints[1], ctx);   
         }
-        console.log(size)
     }
-
+    
     drawHallway(origin, end, ctx) {
-        ctx.strokeStyle = 'black';  
-        ctx.lineWidth = 3; 
+        ctx.strokeStyle = 'white';  
+        ctx.lineWidth = size; 
 
         ctx.beginPath();  
         ctx.moveTo(offset + origin.x * size, offset + origin.y * size);  
         ctx.lineTo(offset + end.x * size, offset + end.y * size);  
         ctx.stroke();
+        ctx.lineWidth = size; 
+        ctx.strokeStyle = 'black'; 
+
+        if (origin.x == end.x) {  
+            ctx.beginPath();  
+            ctx.moveTo(offset + (origin.x + 1) * size, offset + origin.y * size);  
+            ctx.lineTo(offset + (end.x + 1) * size, offset + end.y * size);  
+            ctx.stroke(); 
+            ctx.beginPath();
+
+            ctx.moveTo(offset + (origin.x - 1) * size, offset + origin.y * size);  
+            ctx.lineTo(offset + (end.x - 1) * size, offset + end.y * size);  
+            ctx.stroke();
+        } else {
+            ctx.beginPath();  
+            ctx.moveTo(offset + origin.x * size, offset + (origin.y + 1) * size);  
+            ctx.lineTo(offset + end.x * size, offset + (end.y + 1) * size);  
+            ctx.stroke(); 
+
+            ctx.beginPath();  
+            ctx.moveTo(offset + origin.x * size, offset + (origin.y - 1) * size);  
+            ctx.lineTo(offset + end.x* size, offset + (end.y - 1) * size);  
+            ctx.stroke();
+        }
     }
 }
 

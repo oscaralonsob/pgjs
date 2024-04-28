@@ -1,8 +1,8 @@
 import DrawHallways from "./DrawHallways.js";
 import DrawRooms from "./DrawRooms.js";
 
-export const offset = 600;
-export const size = 16;
+export const offset = 350;
+export const size = 4;
 
 class DrawDungeon {
     drawRooms;
